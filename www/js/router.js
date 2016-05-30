@@ -67,7 +67,7 @@ angular.module('myApp')
         url: '/addData',
         views: {
           'indexView': {
-            templateUrl: 'templates/add-data.html',
+            templateUrl: 'templates/add-data.html',aaaaa
             controller: 'EditDataCtrl as ms'
           }
         }
