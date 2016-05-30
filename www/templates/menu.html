@@ -1,0 +1,43 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-assertive">
+            <ion-nav-back-button>
+            </ion-nav-back-button>            
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>                
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-header-bar class="side-menu-header">
+            <div class="text-center" style="width:100%">
+                <img ng-src="{{ms.userInfo.userIcon}}">
+                <h3><strong>{{ms.userInfo.userName}}</strong></h3>
+                <h5 class="text-hidden">{{ms.userInfo.userDesign}}</h5>
+            </div>
+        </ion-header-bar>
+        <ion-content class="side-menu-content">
+            <ion-list>
+                <ion-item class="item item-icon-left" menu-close ui-sref="app.tabs.playlists">
+                    <i class="icon ion-home"></i>
+                    <h2>首页</h2>
+                </ion-item>
+                <ion-item class="item item-icon-left" menu-close ui-sref="app.memo">
+                    <i class="icon ion-clipboard"></i>
+                    <h2>备忘</h2>
+                </ion-item>
+                <ion-item class="item item-icon-left" menu-close ui-sref="app.map">
+                    <i class="icon ion-navigate"></i>
+                    <h2>地图</h2>
+                </ion-item>
+                <ion-item class="item item-icon-left" menu-close ng-click="ms.login">
+                    <i class="icon ion-power"></i>
+                    <h2>注销</h2>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,17 @@
+<ion-view view-title="百度地图" title-align="center">
+  <ion-content>    
+    <div class="card">
+      <div class="item item-text-wrap card-item-padding item-icon-right" ng-class="{'gray':!ms.info.address}">
+        {{ms.info.address || '正在定位中'}}
+        <i class="icon ion-loop card-item-icon" on-tap="ms.GetCurrentPosition()"></i>
+      </div>
+    </div>
+    <baidu-map ng-if="ms.info.isGetData" latitude="ms.info.latitude" longitude="ms.info.longitude" address="ms.info.address">
+      <bd-zoom-control></bd-zoom-control>
+      <bd-scale-control></bd-scale-control>
+      <bd-marker></bd-marker>
+      <bd-window></bd-window>
+    </baidu-map>
+   
+  </ion-content>
+</ion-view>

@@ -1,0 +1,8 @@
+<ul class="alpha_sidebar">
+    <li ng-click="ms.goItem(item)" ng-style="ms.liHeight" id="{{$index}}" ng-repeat="item in ms.alphabet">{{item}}</li>
+</ul>
+<div class="click-word" ng-show="ms.showWord">
+    <div class="h1">
+        {{ms.nowWord}}
+    </div>
+</div>

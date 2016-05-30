@@ -1,0 +1,36 @@
+<ion-view view-title="通讯录">
+    <ion-nav-buttons side="right">
+        <add-btn-popover add-item="ms.addItem"></add-btn-popover>
+    </ion-nav-buttons>
+    <ul class="list list-inset list-inset-small search-noscroll">
+        <form ng-submit="ms.searchData()">
+            <label class="item item-input item-input-small item-icon-right">
+                    <i class="icon ion-search placeholder-icon search-icon-size"></i>
+                    <input ng-model="ms.filterData.searchWord" ng-model-options="{updateOn : 'submit'}" type="text" placeholder="Search">
+                </label>
+        </form>
+    </ul>
+
+    <ion-content class="has-subheader my-contacts">
+        <div class="my-item">
+            <ion-item ng-hide="ms.importContactArry.length == 0">
+                导入的通讯录名单
+            </ion-item>
+            <ion-item ng-repeat="item in ms.importContactArry" class="item item-avatar item-avatar-no-body">
+                <img ng-src="img/{{item2.$img?item2.$img:'face.png'}}">
+                <h2>{{item.name}}</h2>
+            </ion-item>
+        </div>
+        <div ng-repeat="(key, values) in ms.groupContacts" class="my-item">
+            <ion-item class="item item-divider" id="{{key}}">
+                {{key}}
+            </ion-item>
+            <ion-item class="item item-avatar item-avatar-no-body" ng-repeat="item in values| filter : ms.filterData.searchWord">
+                <img ng-src="img/{{item.$img?item.$img:'face.png'}}">
+                <h2>{{item.name}}</h2>
+            </ion-item>
+        </div>       
+        
+    </ion-content>
+    <name-letter-list></name-letter-list>
+</ion-view>

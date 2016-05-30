@@ -1,0 +1,422 @@
+.text-hidden {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px auto;
+}
+
+.padding-top-20 {
+    padding-top: 20px;
+}
+
+.tabs-stable > .tabs > .tab-item-active {
+    color: #0c60ee;
+}
+
+.search-icon-size {
+    font-size: 24px !important;
+}
+
+.side-menu-header {
+    height: 230px;
+    background: url('../img/slidemenu_bg.jpg');
+    background-size: 100% 100%;
+}
+
+.side-menu-header img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.side-menu-header h3 {
+    margin-top: 10px;
+    padding-bottom: 0;
+}
+
+.side-menu-content {
+    top: 230px;
+}
+
+.side-menu-content .item h2 {
+    width: 120px;
+    padding-left: 15px;
+}
+
+.list-inset-small {
+    margin-top: 12px;
+    margin-bottom: 7px;
+}
+
+.item-input-small {
+    border-radius: 5px !important;
+}
+
+.item-input-small input {
+    height: 16px;
+}
+
+.my-item {
+    -webkit-transition: opacity linear 1s;
+    -o-transition: opacity linear 1s;
+    transition: opacity linear 1s;
+}
+
+.my-item.ng-enter {
+    opacity: 0;
+}
+
+.my-item.ng-enter-active {
+    opacity: 1;
+}
+
+.my-item.ng-leave {
+    opacity: 1;
+    transition: none;
+}
+
+.my-item.ng-leave-active {
+    opacity: 0;
+    transition: none;
+}
+
+.my-item.ng-enter-stagger {
+    transition-delay: 0.1s;
+    transition-duration: 0s;
+    /*要有单位*/
+}
+
+.alpha_sidebar {
+    position: absolute;
+    /*text-align: justify;*/
+    font-family: "Lucida Console", Monaco, monospace;
+    top: 100px;
+    right: 0px;
+    text-align: center;
+}
+
+.alpha_sidebar li {
+    cursor: pointer;
+    width: 27px;
+}
+
+.search-noscroll {
+    position: absolute;
+    top: 39px;
+    right: 0;
+    width: 95%;
+    z-index: 1;
+}
+
+.search-back {
+    font-size: 23px;
+    padding-right: 15px;
+}
+
+.search-result-list {
+    margin-top: 0;
+    padding-bottom: 0;
+}
+
+.search-result-list > li {
+    border: none;
+    border-bottom: 2px solid #ccc;
+}
+
+.click-word {
+    text-align: center;
+    position: absolute;
+    border-radius: 20px;
+    border: 10px rgba(46, 46, 46, 0) solid;
+    top: 40%;
+    right: 35%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(55, 55, 55, .8);
+}
+
+.click-word .h1 {
+    font-size: 5em;
+    font-family: "Lucida Console", Monaco, monospace;
+    color: beige;
+}
+
+.item-avatar-no-body > h2 {
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+.time-line {
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+
+.time-line::before {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 3px;
+    background-color: rgba(111, 114, 239, 1);
+    left: 50px;
+    margin-left: -1.5px;
+    z-index: -1;
+    height: 100%;
+    animation: mymove 3s linear;
+}
+
+@keyframes mymove {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+
+/*Safari and Chrome*/
+
+@-webkit-keyframes mymove {
+    from {
+        height: 0px;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+.time-line .time-left > h6 {
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: white;
+    padding: 15px;
+}
+
+.time-line > li {
+    min-height: 150px;
+}
+
+.time-line > li > div {
+    display: inline-flex;
+}
+
+.time-left {
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.time-right {
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+    padding: 12px;
+    position: relative;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    min-height: 150px;
+    margin-left: 20px;
+}
+
+.time-right::after {
+    position: absolute;
+    top: 45px;
+    left: -18px;
+    display: inline-block;
+    border-top: 18px solid transparent;
+    border-right: 18px solid white;
+    border-bottom: 18px solid transparent;
+    content: " ";
+}
+
+.time-right::before {
+    position: absolute;
+    top: 45px;
+    left: -18px;
+    display: inline-block;
+    border-top: 18px solid transparent;
+    border-left: 0px solid #ccc;
+    border-right: 18px solid #ccc;
+    border-bottom: 18px solid transparent;
+    content: " ";
+}
+
+.img-holder {
+    border-bottom: 1px solid gray;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.time-right img {
+    width: 49%;
+}
+
+.my-memo {
+    -webkit-transition: opacity linear .8s 1s;
+    -o-transition: opacity linear .8s 1s;
+    transition: opacity linear .8s 1s;
+}
+
+.my-memo.ng-enter {
+    opacity: 0;
+}
+
+.my-memo.ng-enter-active {
+    opacity: 1;
+}
+
+.my-memo.ng-leave {
+    opacity: 1;
+}
+
+.my-memo.ng-leave-active {
+    opacity: 0;
+}
+
+.my-memo.ng-enter-stagger {
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+}
+
+.item-input-inset {
+    height: 53px;
+}
+
+.item-input-inset-content {
+    top: 53px;
+}
+
+
+/*指令 popover*/
+
+.popover {
+    height: auto !important;
+    width: 150px;
+}
+
+.popover ion-content {
+    top: 0;
+    position: relative;
+}
+
+.my-popover {
+    text-align: center
+}
+
+.btn-padding {
+    margin-right: 15px;
+}
+
+ion-footer-bar > button {
+    margin-top: 2px !important;
+}
+
+.stable-bg {
+    background-color: rgba(200, 200, 200, .45)
+}
+
+.form-input {
+    padding-left: 15px !important;
+    width: 96% !important;
+    margin: 5px 0 !important;
+    border-radius: 4px !important;
+}
+
+.list-no-margin {
+    margin-bottom: 0px;
+}
+
+input[disabled],
+select[disabled],
+textarea[disabled],
+{
+    background-color: rgba(200, 200, 200, .8) !important;
+}
+
+input[readonly]:not(.cloned-text-input),
+textarea[readonly]:not(.cloned-text-input),
+select[readonly] {
+    background-color: white !important;
+}
+
+.item-divider-bottom {
+    border-bottom: 3px solid indianred;
+}
+
+.ng-invalid {
+    border: 1px solid red !important;
+}
+
+.ng-pristine {
+    border: none !important;
+}
+
+.entity-icon {
+    margin-top: 38px;
+    font-size: 24px !important;
+}
+
+.radio-icon {
+    padding-top: 8px !important;
+}
+
+.zoom-animate.ng-enter {
+    animation-name: zoomIn;
+    animation-duration: .6s;
+}
+
+.zoom-animate.ng-leave {
+    animation-name: zoomOut;
+    animation-duration: .6s;
+}
+
+.my-introduce ion-slide {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.first {
+    background-image: url('../img/slide1.jpg');
+}
+
+.second {
+    background-image: url('../img/slide2.jpg');
+}
+
+.third {
+    background-image: url('../img/slide3.jpg');
+}
+
+.go-index {
+    margin-top: 120%;
+}
+
+.my-contacts .my-item h2 {
+    font-size: 20px;
+    margin-top: 7px;
+}
+
+.gray {
+    color: #ccc;
+}
+
+
+/* Map */
+
+.card,
+.list-inset {
+    margin: 10px;
+}
+
+.card-item-padding {
+    padding: 10px;
+}
+
+.card-item-icon {
+    font-size: 22px !important;
+}

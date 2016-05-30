@@ -1,0 +1,38 @@
+<ion-view view-title="新增">
+    <form name="myForm">
+        <ion-content class="stable-bg">
+            <div class="list list-no-margin" ng-repeat="item in ms.items.info">
+                <div class="item item-divider light-bg item-divider-bottom ">{{item.title}}</div>
+                <label class="item item-input item-stacked-label item-border-bottom item-icon-right" ng-repeat="childItem in item.child">
+                    <span class="input-label">{{childItem.title}}
+                        <i class="assertive" ng-if="childItem.required">*</i>
+                    </span>
+                    <div ng-switch="childItem.type">
+                        <input ng-switch-when="date" class="form-input" ng-model="childItem.value" ng-required="childItem.required" ng-disabled="childItem.disabled"
+                        type="date">
+
+                        <input ng-switch-when="date-time" class="form-input" ng-model="childItem.value" ng-required="childItem.required" ng-disabled="childItem.disabled"
+                        type="datetime-local">
+
+                        <div ng-switch-when="entity" ng-click="ms.selectValue(childItem)">
+                            <input class="form-input" ng-model="childItem.value" ng-required="childItem.required" ng-disabled="childItem.disabled" type="text"
+                            readonly>
+                            <i class="icon ion-ios-arrow-right entity-icon"></i>
+                        </div>
+
+                        <input ng-switch-default class="form-input" ng-model="childItem.value" ng-required="childItem.required" ng-disabled="childItem.disabled"
+                        type="text">
+                    </div>
+
+                </label>
+            </div>            
+        </ion-content>
+
+        <ion-footer-bar class="bar-light">
+            <button class="button text-center button-block button-positive" ng-disabled="myForm.$invalid" ng-click="ms.saveData()">
+                保存
+            </button>
+        </ion-footer-bar>
+    </form>
+
+</ion-view>

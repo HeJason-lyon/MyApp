@@ -1,0 +1,11 @@
+<ion-popover-view class="my-popover">
+    <ion-content class="my-content">
+        <ion-list>
+          <ion-item on-tap="hidePopover()" class="item-icon-left"
+            ng-repeat="item in ms.menuItem" ng-click="{{item.onClick}}">
+                <i class="icon" ng-class="item.icon"></i>
+                {{item.title}}
+          </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-popover-view>

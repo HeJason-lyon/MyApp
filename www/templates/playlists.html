@@ -1,0 +1,28 @@
+<ion-view view-title="客户信息">
+    <ion-nav-buttons side="right">
+        <add-btn-popover></add-btn-popover>
+    </ion-nav-buttons>
+    <ul class="list list-inset list-inset-small search-noscroll">
+        <form>
+            <label class="item item-input item-input-small item-icon-right">
+          <i class="icon ion-search placeholder-icon search-icon-size"></i>
+          <input search-input type="text" placeholder="Search" readonly>
+      </label>
+        </form>
+    </ul>
+    <ion-content class="has-subheader" >
+        <ion-list show-delete="ms.isDel" show-reorder="ms.isOrder">
+            <ion-item ng-repeat="item in ms.playlists" ui-sref="app.tabs.playlistSingle({playlistId : item.id})">
+                {{item.title}}
+                <ion-option-button class="button-assertive" ng-click="ms.delData($index)">
+                    删除
+                </ion-option-button>
+             
+                <ion-delete-button class="ion-minus-circled" ng-click="ms.delData($index)">
+                </ion-delete-button>
+                <ion-reorder-button class="ion-navicon" on-reorder="ms.orderData(item, $fromIndex, $toIndex)">
+                </ion-reorder-button>
+            </ion-item>
+        </ion-list> 
+    </ion-content>
+</ion-view>

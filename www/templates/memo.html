@@ -1,0 +1,7 @@
+<ion-view view-title="备忘">
+    <ion-content style="background-color:rgba(203,204,187,0.5)">
+        <time-line-holder>
+            <time-line-item class="my-memo" ng-repeat="item in ms.memoData" time = "{{item.time}}" content="{{item.content}}"></time-line-item>
+        </time-line-holder>
+    </ion-content>
+</ion-view>

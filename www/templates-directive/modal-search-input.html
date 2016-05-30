@@ -1,0 +1,10 @@
+<form ng-submit="ms.searchData(ms.searchWord)">
+    <div class="bar bar-header bar-stable item-input-inset">
+        <i class="icon ion-chevron-left search-back" ng-click="hideModal()"></i>
+        <div class="item-input-wrapper light-bg">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" id="mySearch" placeholder="Search" ng-model-options="{updateOn:'default submit',debounce:{default:200,blur:0}}" ng-model="ms.searchWord">
+            <i class="icon ion-ios-close" ng-show="ms.searchWord" on-tap="clearSearchWord()"></i>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,10 @@
+<ion-modal-view>
+    <modal-search-input></modal-search-input>
+    <ion-content class="has-header item-input-inset-content">
+        <ul class="list list-inset search-result-list">
+            <li class="item" ng-click="modal.hide()" ui-sref="app.tabs.playlistSingle({playlistId : item.id})" ng-repeat="item in ms.searchPlayLists | searchWord : ms.playlists :ms.searchWord">
+                {{item.title}}
+            </li>
+        </ul>
+    </ion-content>
+</ion-modal-view>
