@@ -67,7 +67,7 @@ angular.module('myApp')
         url: '/addData',
         views: {
           'indexView': {
-            templateUrl: 'templates/add-data.html',aaaaa
+            templateUrl: 'templates/add-data.html',
             controller: 'EditDataCtrl as ms'
           }
         }
@@ -96,7 +96,7 @@ angular.module('myApp')
                   result.push({ id: i, name: "test" + i });
                 }
                 var endTime = new Date().getTime();
-                console.log(endTime-startTime);
+                console.log(endTime - startTime);
                 return result;
               }
             }

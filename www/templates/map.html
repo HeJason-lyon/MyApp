@@ -6,7 +6,7 @@
         <i class="icon ion-loop card-item-icon" on-tap="ms.GetCurrentPosition()"></i>
       </div>
     </div>
-    <baidu-map ng-if="ms.info.isGetData" latitude="ms.info.latitude" longitude="ms.info.longitude" address="ms.info.address">
+    <baidu-map ng-if="ms.info.isGetData" latitude="ms.info.latitude" longitude="ms.info.longitude" address="ms.info.address" zoom="ms.info.zoom">
       <bd-zoom-control></bd-zoom-control>
       <bd-scale-control></bd-scale-control>
       <bd-marker></bd-marker>

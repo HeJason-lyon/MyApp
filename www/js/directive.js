@@ -203,27 +203,54 @@ angular.module("myApp.directive", [])
                 latitude: "=",
                 longitude: "=",
                 address: '=',
+                zoom: '='
             },
             controller: function ($scope, $element, $attrs, $transclude) {
                 this.mapEle = jqLite($element[0]).find('div')[0];
                 this.map = new BMap.Map(this.mapEle);
                 this.point = new BMap.Point($scope.longitude, $scope.latitude);
+                this.nowMarker = new BMap.Marker(this.point);
+                this.changePonit = function (longitude, latitude) {
+                    this.point = new BMap.Point(longitude, latitude)
+                    this.nowMarker = new BMap.Marker(this.point);
+                    $scope.$broadcast('PonitChange');
+                }
             },
             transclude: true,
             replace: true,
             link: function ($scope, iElm, iAttrs, controller) {
                 var windowHeight = App.window.innerHeight;
                 var docHeight = windowHeight - 43 - 60;
-                jqLite(controller.mapEle).css('height', docHeight + "px");
-                controller.map.centerAndZoom(controller.point, 16)
                 var myGeo = new BMap.Geocoder();
-                myGeo.getLocation(controller.point, function (result) {
-                    if (result) {
-                        $scope.$apply(function () {
-                            $scope.address = result.address;
-                        });
+                var isFirst = true;
+                jqLite(controller.mapEle).css('height', docHeight + "px");
+                var getAddress = function () {
+                    myGeo.getLocation(controller.point, function (result) {
+                        if (result) {
+                            $scope.$apply(function () {
+                                $scope.address = result.address;
+                            });
+                        }
+                    });
+                }
+                var initPostition = function () {
+                    controller.map.centerAndZoom(controller.point, $scope.zoom)
+                    getAddress();
+                }
+                var panPostition = function () {
+                    controller.map.panTo(controller.point)
+                    getAddress();
+                }
+                $scope.$watch('latitude+longitude', function () {
+                    alert(1);
+                    if (isFirst) {
+                        initPostition();
+                    } else {
+                        controller.changePonit($scope.latitude, $scope.longitude);
+                        panPostition();
                     }
-                });
+                    isFirst = false;
+                })
             }
         }
     })
@@ -233,9 +260,8 @@ angular.module("myApp.directive", [])
             require: '^baiduMap',
             replace: true,
             link: function (scope, iElm, iAttrs, baiduMap) {
-                console.log(scope);
                 var zoomControl = new BMap.ZoomControl();
-                baiduMap.map.addControl(zoomControl);//添加缩放控件  
+                baiduMap.map.addControl(zoomControl);//添加缩放控件                  
             }
         }
     })
@@ -256,8 +282,9 @@ angular.module("myApp.directive", [])
             require: '^baiduMap',
             replace: true,
             link: function (scope, iElm, iAttrs, baiduMap) {
-                var marker = new BMap.Marker(baiduMap.point);
-                baiduMap.map.addOverlay(marker);
+                scope.$on('PonitChange', function () {
+                    baiduMap.map.addOverlay(baiduMap.nowMarker);
+                })
             }
         }
     })
@@ -266,13 +293,14 @@ angular.module("myApp.directive", [])
             restrict: 'AE',
             require: '^baiduMap',
             replace: true,
-            link: function (scope, iElm, iAttrs, baiduMap) {              
+            link: function (scope, iElm, iAttrs, baiduMap) {
                 var opts = scope.$eval(iAttrs.infoOptions);
                 var content = iAttrs.infoContent;
                 content = content ? content : "<h5 class='light text-center'>您当前的位置</h5>";
-                var marker = new BMap.Marker(baiduMap.point);                
                 var infoWindow = new BMap.InfoWindow(content, opts);
-                baiduMap.map.openInfoWindow(infoWindow, marker.getPosition());
+                scope.$on('PonitChange', function () {
+                    baiduMap.map.openInfoWindow(infoWindow, baiduMap.nowMarker.getPosition());
+                })
             }
         }
     })

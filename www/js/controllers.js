@@ -25,7 +25,7 @@ angular.module('myApp.controllers', [])
             userIcon: 'img/icon_2.jpg'
         }
     })
-    .controller('PlaylistsCtrl', ['App', 'MyPopupFactory', 'PlaylistsData', '$scope', '$cordovaSplashscreen', '$cordovaGeolocation','$interval', function (App, MyPopupFactory, PlaylistsData, $scope, $cordovaSplashscreen, $cordovaGeolocation,$interval) {
+    .controller('PlaylistsCtrl', ['App', 'MyPopupFactory', 'PlaylistsData', '$scope', '$cordovaSplashscreen', '$cordovaGeolocation', '$interval', function (App, MyPopupFactory, PlaylistsData, $scope, $cordovaSplashscreen, $cordovaGeolocation, $interval) {
         var ms = this;
         ms.isShow = false;
 
@@ -51,7 +51,6 @@ angular.module('myApp.controllers', [])
                 title: "排序",
                 onClick: 'ms.showOrder()'
             }];
-
         ms.showDel = function () {
             ms.isDel = !ms.isDel;
         }
@@ -94,18 +93,8 @@ angular.module('myApp.controllers', [])
             timeout: 27000,            // 超时时间
             coorType: 'bd09ll'         // 默认是 gcj02，可填 bd09ll 以获取百度经纬度用于访问百度 API
         }
-
-
-        ms.info = {}
-        ms.watchPosition = function () {
-            watchId = $cordovaGeolocation.watchPosition(options).then(function(result){
-                alert(result);
-            },function(error){
-                alert(error);
-            },function(position){
-                alert(position.coords.latitude);
-                alert(position.coords.longitude);
-            });
+        ms.info = {
+            zoom: 16
         }
         ms.GetCurrentPosition = function () {
             try {
@@ -120,10 +109,13 @@ angular.module('myApp.controllers', [])
                 alert(e);
             }
         }
+        ms.changePosition = function () {
+            ms.info.latitude = 116.404;
+            ms.info.longitude = 39.915;
+        }
         ms.GetCurrentPosition();
-        ms.watchPosition();
     })
-    .controller('ContactsCtrl', function ($scope, $filter, $cordovaContacts,MyTest) {
+    .controller('ContactsCtrl', function ($scope, $filter, $cordovaContacts, MyTest) {
         var ms = this;
         ms.showWord = false;
 
@@ -225,7 +217,7 @@ angular.module('myApp.controllers', [])
                 $img: "icon_6.jpg"
             }
         ]
-        ms.test = MyTest;     
+        ms.test = MyTest;
         ms.importContactArry = [];
         ms.groupContacts = []
 

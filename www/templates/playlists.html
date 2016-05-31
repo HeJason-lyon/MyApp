@@ -10,7 +10,7 @@
       </label>
         </form>
     </ul>
-    <ion-content class="has-subheader" >
+    <ion-content class="has-subheader">      
         <ion-list show-delete="ms.isDel" show-reorder="ms.isOrder">
             <ion-item ng-repeat="item in ms.playlists" ui-sref="app.tabs.playlistSingle({playlistId : item.id})">
                 {{item.title}}

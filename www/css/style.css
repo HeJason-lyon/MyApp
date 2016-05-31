@@ -367,12 +367,12 @@ select[readonly] {
 
 .zoom-animate.ng-enter {
     animation-name: zoomIn;
-    animation-duration: .6s;
+    animation-duration: .4s;
 }
 
 .zoom-animate.ng-leave {
     animation-name: zoomOut;
-    animation-duration: .6s;
+    animation-duration: .4s;
 }
 
 .my-introduce ion-slide {
