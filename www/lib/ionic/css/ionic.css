@@ -5458,14 +5458,14 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
 .platform-ios .popover .scroll-content.has-header {
   margin-top: 0; }
 
-.platform-ios .popover-arrow {
+.popover-arrow {
   position: absolute;
   display: block;
   top: -17px;
   width: 30px;
   height: 19px;
   overflow: hidden; }
-  .platform-ios .popover-arrow:after {
+ .popover-arrow:after {
     position: absolute;
     top: 12px;
     left: 5px;
@@ -5483,7 +5483,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
   .platform-ios .popover-bottom .popover-arrow:after {
     top: -6px; }
 
-.platform-android .popover {
+/*.platform-android .popover {
   margin-top: -32px;
   background-color: #fafafa;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); }
@@ -5496,7 +5496,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
 
 .platform-android .popover-backdrop,
 .platform-android .popover-backdrop.active {
-  background-color: transparent; }
+  background-color: transparent; }*/
 
 .popover-open {
   pointer-events: none; }

@@ -115,7 +115,7 @@ angular.module('myApp.controllers', [])
         }
         ms.GetCurrentPosition();
     })
-    .controller('ContactsCtrl', function ($scope, $filter, $cordovaContacts, MyTest) {
+    .controller('ContactsCtrl', function ($scope, $filter, $cordovaContacts) {
         var ms = this;
         ms.showWord = false;
 
@@ -217,13 +217,8 @@ angular.module('myApp.controllers', [])
                 $img: "icon_6.jpg"
             }
         ]
-        ms.test = MyTest;
         ms.importContactArry = [];
         ms.groupContacts = []
-
-        ms.orderLists = function () {
-            ms.contacts = $filter('orderBy')(ms.contacts, 'name');
-        }
 
         ms.importContacts = function () {
             try {
@@ -239,7 +234,6 @@ angular.module('myApp.controllers', [])
                 alert(e);
             }
         }
-        // alert(ms.contacts);
         ms.makeGroup = function () {
             var tmp = {};
             var firstWord;
@@ -253,7 +247,6 @@ angular.module('myApp.controllers', [])
             return tmp;
         }
         ms.loadData = function () {
-            ms.orderLists();
             ms.groupContacts = ms.makeGroup();
         }
         ms.loadData();

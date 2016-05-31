@@ -3,7 +3,7 @@
         <add-btn-popover add-item="ms.addItem"></add-btn-popover>
     </ion-nav-buttons>
     <ul class="list list-inset list-inset-small search-noscroll">
-        <form ng-submit="ms.searchData()">
+        <form >
             <label class="item item-input item-input-small item-icon-right">
                     <i class="icon ion-search placeholder-icon search-icon-size"></i>
                     <input ng-model="ms.filterData.searchWord" ng-model-options="{updateOn : 'submit'}" type="text" placeholder="Search">
@@ -16,7 +16,7 @@
             <ion-item ng-hide="ms.importContactArry.length == 0">
                 导入的通讯录名单
             </ion-item>
-            <ion-item ng-repeat="item in ms.importContactArry" class="item item-avatar item-avatar-no-body">
+            <ion-item ng-repeat="item in ms.importContactArry| filter : ms.filterData.searchWord" class="item item-avatar item-avatar-no-body">
                 <img ng-src="img/{{item2.$img?item2.$img:'face.png'}}">
                 <h2>{{item.name}}</h2>
             </ion-item>
@@ -29,8 +29,8 @@
                 <img ng-src="img/{{item.$img?item.$img:'face.png'}}">
                 <h2>{{item.name}}</h2>
             </ion-item>
-        </div>       
-        
+        </div>
+
     </ion-content>
     <name-letter-list></name-letter-list>
 </ion-view>

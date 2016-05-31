@@ -6,6 +6,10 @@
     margin: 0px auto;
 }
 
+.auto-wrap {
+    white-space: normal;
+}
+
 .padding-top-20 {
     padding-top: 20px;
 }

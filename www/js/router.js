@@ -35,7 +35,7 @@ angular.module('myApp')
         }
       })
 
-      .state('app.mmo', {
+      .state('app.memo', {
         url: '/memo',
         views: {
           'menuContent': {
@@ -96,7 +96,6 @@ angular.module('myApp')
                   result.push({ id: i, name: "test" + i });
                 }
                 var endTime = new Date().getTime();
-                console.log(endTime - startTime);
                 return result;
               }
             }

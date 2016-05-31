@@ -77,14 +77,13 @@ angular.module("myApp.directive", [])
             restrict: 'AE',
             templateUrl: "templates-directive/modal-search-input.html",
             link: function ($scope, iElm, iAttrs, controller) {
-                // var body = document.body;
-                var s = jqLite(iElm[0]).find('input')[0];
+                var searchInput = jqLite(iElm[0]).find('input')[0];
 
                 $scope.hideModal = function () {
                     $scope.modal.hide();
                 }
                 $scope.clearSearchWord = function () {
-                    s.focus()
+                    searchInput.focus()
                     $scope.ms.searchWord = "";
                     $scope.ms.searchPlayLists = [];
                 }
@@ -127,8 +126,11 @@ angular.module("myApp.directive", [])
                         ms.showWord = false;
                     }, 500);
                 }
+                ms.show = function(id){
+                    ms.id = id;
+                }
                 iterateAlphabet();
-                makeHeight();
+                makeHeight();              
             }
         }
     })
