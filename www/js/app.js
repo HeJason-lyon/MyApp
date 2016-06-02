@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('myApp', ['ionic', 'myApp.controllers', 'myApp.service', 'myApp.directive', 'ngCordova', 'myApp.filter', 'ngStorage'])
+angular.module('myApp', ['ionic','myApp.service', 'ngCordova', 'myApp.filter', 'ngStorage','oc.lazyLoad'])
   .run(function (App, $ionicPlatform, $cordovaKeyboard, $rootScope, $cordovaToast, IsHideTabs, $cordovaSplashscreen) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

@@ -1,5 +1,5 @@
-<ion-view view-title="百度地图" title-align="center">
-  <ion-content>    
+<ion-view cache-view="false" view-title="百度地图" title-align="center">
+  <ion-content>
     <div class="card">
       <div class="item item-text-wrap card-item-padding item-icon-right" ng-class="{'gray':!ms.info.address}">
         {{ms.info.address || '正在定位中'}}
@@ -12,6 +12,8 @@
       <bd-marker></bd-marker>
       <bd-window></bd-window>
     </baidu-map>
-   
+    <div class="text-center">
+      <ion-spinner ng-hide="ms.info.isGetData" class="spinner-royal" icon="lines"></ion-spinner>
+    </div>
   </ion-content>
 </ion-view>

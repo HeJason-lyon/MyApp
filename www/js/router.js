@@ -1,19 +1,37 @@
 angular.module('myApp')
   .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, App) {
+    var loadFiles = [];
+    var resultLoadFiles = [];
+
     $ionicConfigProvider.tabs.position("bottom");
     $ionicConfigProvider.tabs.style("standard");
-    $ionicConfigProvider.navBar.alignTitle('center')
+    $ionicConfigProvider.navBar.alignTitle('center');
+    
     $stateProvider
       .state('introduce', {
         url: '/introduce',
         templateUrl: 'templates/introduce.html',
         controller: 'IntroudeCtrl as ms',
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['Introduction.js.c']
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
+        }
       })
       .state('app', {
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl as ms'
+        controller: 'AppCtrl as ms',
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['App.js.c'];
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
+        }
       })
 
       .state('app.search', {
@@ -32,6 +50,13 @@ angular.module('myApp')
             templateUrl: 'templates/map.html',
             controller: 'MapCtrl as ms'
           }
+        },
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['Map.js.c', "BaiduMap.js.d"];
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
         }
       })
 
@@ -42,6 +67,13 @@ angular.module('myApp')
             templateUrl: 'templates/memo.html',
             controller: 'memoCtrl as ms'
           }
+        },
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['Memo.js.c', "TimeLine.js.d"];
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
         }
       })
 
@@ -54,6 +86,7 @@ angular.module('myApp')
           }
         }
       })
+
       .state('app.tabs.playlists', {
         url: '/playlists',
         views: {
@@ -61,8 +94,16 @@ angular.module('myApp')
             templateUrl: 'templates/playlists.html',
             controller: 'PlaylistsCtrl as ms'
           }
+        },
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['Playlists.js.c', 'ModalSearchInput.js.d', 'AddPopover.js.d','Playlists.js.s']
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles);
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
         }
       })
+
       .state('app.tabs.addData', {
         url: '/addData',
         views: {
@@ -70,8 +111,16 @@ angular.module('myApp')
             templateUrl: 'templates/add-data.html',
             controller: 'EditDataCtrl as ms'
           }
+        },
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['EditData.js.c','Playlists.js.s'];
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
         }
       })
+
       .state('app.tabs.playlistSingle', {
         url: '/playlistSingle/:playlistId',
         views: {
@@ -79,6 +128,13 @@ angular.module('myApp')
             templateUrl: 'templates/add-data.html',
             controller: 'EditDataCtrl as ms'
           }
+        },
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['EditData.js.c',"Playlists.js.s"];
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
         }
       })
 
@@ -89,19 +145,16 @@ angular.module('myApp')
             templateUrl: 'templates/contacts.html',
             controller: 'ContactsCtrl as ms',
             resolve: {
-              MyTest: function () {
-                var result = [];
-                var startTime = new Date().getTime();
-                for (var i = 0; i < 1000; i++) {
-                  result.push({ id: i, name: "test" + i });
-                }
-                var endTime = new Date().getTime();
-                return result;
-              }
+              appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+                loadFiles = ['Contacts.js.c'];
+                resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+                return $ocLazyLoad.load(resultLoadFiles);
+              }]
             }
           }
         }
       })
+
       .state('app.tabs.contactSingle', {
         url: '/contactSingle/:contactsId',
         views: {
@@ -119,6 +172,13 @@ angular.module('myApp')
             templateUrl: 'templates/about.html',
             controller: 'AboutCtrl as ms'
           }
+        },
+        resolve: {
+          appLoad: ['$ocLazyLoad', '$filter', function ($ocLazyLoad, $filter) {
+            loadFiles = ['About.js.c'];
+            resultLoadFiles = $filter('getLoadFiles')(loadFiles)
+            return $ocLazyLoad.load(resultLoadFiles);
+          }]
         }
       })
     $urlRouterProvider.otherwise('/introduce');

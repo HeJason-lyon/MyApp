@@ -1,5 +1,6 @@
 angular.module('myApp')
     .run(function (App, $ionicPlatform, $rootScope, $timeout, $ionicHistory, $q, $window, $ionicModal, $ionicPopover, $state, $stateParams,IsHideTabs,$ionicScrollDelegate,$location,$ionicPopup,$filter,$localStorage,$document) {
+        
         //angular工具
         jqLite = angular.element;
         each = angular.forEach;
